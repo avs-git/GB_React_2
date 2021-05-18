@@ -1,34 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import { randomInRange, BOT_NAME, botReplics } from '@utils';
+import { randomInRange } from '@utils';
+import { BOT_NAME, botReplics, messages } from '@utils/static';
 
 import Messages from '@components/Messages';
 import MessageInput from '@components/MessageInput';
-
-// заглушка. Потом здесь будем получать уже какие-то сообщения с сервера
-const messages = [
-  {
-    id: 1,
-    author: 'Miguel',
-    text: 'Ola!',
-  },
-  {
-    id: 2,
-    author: 'Bjorn',
-    text: 'Hi!',
-  },
-  {
-    id: 3,
-    author: 'Stitch',
-    text: 'Aloha!',
-  },
-  {
-    id: 4,
-    author: 'Иван',
-    text: 'Привет!',
-  },
-];
 
 const MessagePage = (props) => {
   const {
