@@ -1,15 +1,14 @@
-import React, { memo } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+
+import Message from './Message';
 
 const Messages = (props) => {
   const { messages } = props;
 
   const renderMessages = () =>
     messages.map(({ author, id, text }) => (
-      <div key={id}>
-        <span>{author}: </span>
-        <span>{text}</span>
-      </div>
+      <Message key={id} author={author} text={text} />
     ));
 
   return <div>{renderMessages()}</div>;
@@ -23,4 +22,4 @@ Messages.defaultProps = {
   messages: [],
 };
 
-export default memo(Messages);
+export default Messages;

@@ -1,4 +1,4 @@
-import React, { useState, memo } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 const MessageInput = (props) => {
@@ -8,8 +8,9 @@ const MessageInput = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!value) return;
 
-    onSend(value);
+    onSend({ messageText: value });
     setValue('');
   };
 
@@ -34,4 +35,4 @@ MessageInput.defaultProps = {
   onSend: () => {},
 };
 
-export default memo(MessageInput);
+export default MessageInput;
