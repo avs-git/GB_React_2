@@ -1,20 +1,16 @@
-import { render } from 'react-dom';
 import React from 'react';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
 
-import MessagePage from '@containers/MessagePage';
+import Router from '@containers/Router';
 
-// как бы получили залогиненного пользователя с сервера. Потом переедет в редукс
-const user = {
-  id: 1,
-  name: 'LoggedUserName',
-};
+import { store } from '@store';
 
 const App = () => {
   return (
-    <div>
-      <h1>Добро пожаловать в чатик!!!</h1>
-      <MessagePage user={user} />
-    </div>
+    <Provider store={store}>
+      <Router />
+    </Provider>
   );
 };
 

@@ -18,6 +18,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
   },
   optimization: isDevelopment
     ? {}
@@ -78,6 +79,7 @@ module.exports = {
       '@components': path.resolve(__dirname, 'src/components/'),
       '@containers': path.resolve(__dirname, 'src/containers/'),
       '@utils': path.resolve(__dirname, 'src/utils/'),
+      '@static': path.resolve(__dirname, 'src/static/'),
     },
   },
   devServer: {
