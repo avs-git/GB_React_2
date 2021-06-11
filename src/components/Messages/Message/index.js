@@ -1,20 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Card, CardContent, Typography } from '@material-ui/core';
 
-import { BOT_NAME } from '@utils';
+import { BOT_NAME } from '@static';
 
-// eslint-disable-next-line no-unused-vars
-import styles from './styles.css';
+import { useStyles } from './styles';
 
 const Message = (props) => {
   const { author, text } = props;
-  const messageClassName = author === BOT_NAME ? 'chatBotAnswer' : null;
+
+  const classes = useStyles({
+    isOutgoingMessage: author !== BOT_NAME,
+  });
 
   return (
-    <div className={messageClassName}>
-      <span>{author}: </span>
-      <span>{text}</span>
-    </div>
+    <Card className={classes.message}>
+      <CardContent>
+        <Typography>{author}: </Typography>
+        <Typography>{text}</Typography>
+      </CardContent>
+    </Card>
   );
 };
 
