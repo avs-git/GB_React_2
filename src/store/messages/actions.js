@@ -4,8 +4,6 @@ import { MESSAGES_FETCH, MESSAGE_SEND } from './types';
 export const fetchInitialMessages = (conversationId) => {
   const payload = fetchMessagesUtil(conversationId) || [];
 
-  console.log('!!!!! payla messages', payload);
-
   return {
     type: MESSAGES_FETCH,
     payload,

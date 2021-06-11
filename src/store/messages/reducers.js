@@ -4,7 +4,6 @@ import { MESSAGES_FETCH, MESSAGE_SEND } from './types';
 const initialState = messagesStatic;
 
 export const messages = (state = initialState, action) => {
-  console.log('!!!! action', state, action.payload);
   switch (action.type) {
     case MESSAGES_FETCH:
       return [...action.payload];

@@ -3,9 +3,6 @@ import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { randomInRange } from '@utils';
-import { BOT_NAME, botReplics } from '@static';
-
 import { sendMessage } from '@store/messages';
 
 import Messages from '@components/Messages';
@@ -54,22 +51,6 @@ const MessagePage = (props) => {
     );
   };
 
-  const getBotReplic = () =>
-    botReplics[randomInRange(0, botReplics.length - 1)];
-
-  const addBotAnswer = () => {
-    if (!messageList.length) return;
-
-    const lastAuthorName = messageList[messageList.length - 1].author;
-    if (lastAuthorName === BOT_NAME) return;
-
-    handleAddMessage({
-      author: BOT_NAME,
-      messageText: `${getBotReplic()} ${lastAuthorName}`,
-    });
-  };
-
-  useEffect(addBotAnswer, [messageList, handleAddMessage]);
   useEffect(scrollToLastMessage, [messageList]);
 
   const classes = useStyles();
