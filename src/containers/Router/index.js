@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Layout from '@containers/Layout';
 import WelcomeScreen from '@components/WelcomeScreen';
 import MessagePage from '@containers/MessagePage';
+import Gists from '@containers/Gists';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchConversations } from '@store/conversations';
 
@@ -17,11 +18,6 @@ const getConversations = (state) => state.conversations;
 const Router = () => {
   const conversationsList = useSelector(getConversations);
   const dispatch = useDispatch();
-
-  const state = useSelector((state) => state);
-
-  console.log('!!!! state', state);
-  console.log('!!!! conversationsList', conversationsList);
 
   useEffect(() => {
     dispatch(fetchConversations());
@@ -41,6 +37,11 @@ const Router = () => {
               <MessagePage {...params} user={user} />
             </Layout>
           )}
+        </Route>
+        <Route path="/gists">
+          <Layout navItems={[]}>
+            <Gists />
+          </Layout>
         </Route>
         <Route>
           <Layout navItems={conversationsList} isEmpty={true} />
